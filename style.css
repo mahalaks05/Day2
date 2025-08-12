@@ -4,17 +4,47 @@ body {
   font-family: "Segoe UI", sans-serif;
   display: flex;
   justify-content: center;
-  background-color: #f0f0f0;
-  transition: background-color 0.3s, color 0.3s;
+  align-items: flex-start;
+  min-height: 100vh;
+  /* Animated gradient background */
+  background: linear-gradient(270deg, #ffecd2, #fcb69f, #ff9a9e, #fad0c4);
+  background-size: 800% 800%;
+  animation: gradientBG 15s ease infinite;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Dark mode gradient */
+.dark-mode {
+  background: linear-gradient(270deg, #0f2027, #203a43, #2c5364);
+  background-size: 800% 800%;
+  animation: gradientBG 15s ease infinite;
+  color: #fff;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .calculator-container {
   margin-top: 40px;
   padding: 20px;
   border-radius: 12px;
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   width: 320px;
+  backdrop-filter: blur(10px);
+}
+
+.dark-mode .calculator-container {
+  background: rgba(30, 30, 30, 0.9);
 }
 
 input#display {
@@ -24,6 +54,8 @@ input#display {
   margin-bottom: 10px;
   padding: 10px;
   text-align: right;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 
 .buttons,
@@ -41,11 +73,21 @@ button {
   border-radius: 8px;
   cursor: pointer;
   background-color: #dcdcdc;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
 button:hover {
   background-color: #bcbcbc;
+  transform: scale(1.05);
+}
+
+.dark-mode button {
+  background-color: #333;
+  color: white;
+}
+
+.dark-mode button:hover {
+  background-color: #444;
 }
 
 .history-log {
@@ -63,20 +105,6 @@ button:hover {
   font-size: 14px;
 }
 
-.dark-mode {
-  background-color: #121212;
-  color: #fff;
-}
-
-.dark-mode .calculator-container {
-  background-color: #1e1e1e;
-}
-
-.dark-mode button {
-  background-color: #333;
-  color: white;
-}
-
-.dark-mode button:hover {
-  background-color: #444;
+.dark-mode .history-log ul {
+  background: #222;
 }
