@@ -108,3 +108,58 @@ button:hover {
 .dark-mode .history-log ul {
   background: #222;
 }
+
+.animated-symbols {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* So clicks go through */
+  overflow: hidden;
+  z-index: -1; /* Behind calculator */
+}
+
+.symbol {
+  position: absolute;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+  animation: floatSymbols 6s ease-in-out infinite;
+}
+
+.dark-mode .symbol {
+  color: rgba(255, 255, 255, 0.15);
+  text-shadow: 0 0 8px rgba(150, 159, 200, 0.3);
+}
+
+.symbol:nth-child(1) {
+  top: 10%;
+  left: 15%;
+  animation-delay: 0s;
+}
+.symbol:nth-child(2) {
+  top: 30%;
+  left: 80%;
+  animation-delay: 1.5s;
+}
+.symbol:nth-child(3) {
+  top: 60%;
+  left: 10%;
+  animation-delay: 3s;
+}
+.symbol:nth-child(4) {
+  top: 80%;
+  left: 75%;
+  animation-delay: 4.5s;
+}
+
+@keyframes floatSymbols {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(15deg);
+  }
+}
